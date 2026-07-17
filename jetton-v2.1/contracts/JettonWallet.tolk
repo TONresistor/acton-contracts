@@ -71,7 +71,7 @@ fun onInternalMessage(in: InMessage) {
             if (msg.sendExcessesTo != null) {
                 val toLeaveOnBalance = contract.getOriginalBalance() - in.valueCoins +
                 contract.getStorageDuePayment();
-                reserveToncoinsOnBalance(
+                reserveGramsOnBalance(
                     max(toLeaveOnBalance, calculateJettonWalletMinStorageFee()),
                     RESERVE_MODE_AT_MOST,
                 );
@@ -82,7 +82,7 @@ fun onInternalMessage(in: InMessage) {
                     value: 0,
                     body: ReturnExcessesBack { queryId: msg.queryId },
                 });
-                // SAFETY: mode SEND_MODE_CARRY_ALL_BALANCE is used after reserveToncoinsOnBalance()
+                // SAFETY: mode SEND_MODE_CARRY_ALL_BALANCE is used after reserveGramsOnBalance()
                 excessesMsg.send(SEND_MODE_CARRY_ALL_BALANCE | SEND_MODE_IGNORE_ERRORS);
             }
         }

@@ -86,7 +86,7 @@ fun onInternalMessage(in: InMessage) {
             var ansTag = -price;
 
             if (price >= 0) {
-                reserveToncoinsOnBalance(price, RESERVE_MODE_INCREASE_BY_ORIGINAL_BALANCE);
+                reserveGramsOnBalance(price, RESERVE_MODE_INCREASE_BY_ORIGINAL_BALANCE);
 
                 ansTag = TAG_NEW_VOTING_CREATED;
                 mode = SEND_MODE_CARRY_ALL_BALANCE;
